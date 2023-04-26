@@ -57,7 +57,6 @@ def scrape_page_data(i):
         input = driver.find_element(
             By.CSS_SELECTOR, "input[placeholder='Zip Code, City, State or Store #']")
         webdriver.ActionChains(driver).click(input).perform()
-        print('ffff')
 
         input = driver.find_element(
             By.CSS_SELECTOR, "input[placeholder='Zip Code, City, State or Store #']")
@@ -67,8 +66,6 @@ def scrape_page_data(i):
         mouse()
         webdriver.ActionChains(driver).send_keys_to_element(
             input, Keys.ENTER).perform()
-
-        print('ssssss')
 
         mouse()
         # find the store number for the store you want. It's in the html on the button
@@ -93,7 +90,7 @@ def scrape_page_data(i):
     return skus, prices, description
 
 
-def pagination(url, pages=2):
+def pagination(url, pages=1):
 
     prod_num = []
     prod_price = []
@@ -105,7 +102,7 @@ def pagination(url, pages=2):
 
         # print(f"this is page {i}")
         driver.get(f"{url}?Nao={page_num}")
-        skus, prices, description = scrape_page_data(i)
+        skus, prices, description = scrape_page_data()
 
     for sku in skus:
         prod_num.append(sku.text)
