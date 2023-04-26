@@ -102,7 +102,7 @@ def pagination(url, pages=1):
 
         # print(f"this is page {i}")
         driver.get(f"{url}?Nao={page_num}")
-        skus, prices, description = scrape_page_data()
+        skus, prices, description = scrape_page_data(i)
 
     for sku in skus:
         prod_num.append(sku.text)
